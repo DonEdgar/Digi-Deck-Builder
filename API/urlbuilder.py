@@ -1,4 +1,3 @@
-from query_builder import query_builder
 from typing import Dict
 
 def urlbuilder(params: Dict[str, str]):
@@ -16,10 +15,4 @@ def urlbuilder(params: Dict[str, str]):
 
     URL = BASEURL + QUERY
 
-    print(URL)
-
-
-
-params = query_builder()
-
-urlbuilder(params)
+    return URL
