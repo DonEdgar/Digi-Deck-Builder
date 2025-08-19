@@ -1,15 +1,20 @@
 import json
 
-from query_builder import query_builder
-from urlbuilder import urlbuilder
-from digimon_api import call_api
+import query_builder
+import urlbuilder
+import digimon_api
 
-params = query_builder()
+def raw_to_json():
+    params = query_builder.query_builder()
 
-url = urlbuilder(params)
+    url = urlbuilder.urlbuilder(params)
 
-raw_json = call_api(url)
+    raw_json = digimon_api.call_api(url)
 
-cleaned_json = json.dumps(raw_json)
+    cleaned_json = json.dumps(raw_json)
 
-print(cleaned_json)
+    return cleaned_json
+
+json_string = raw_to_json()
+
+print(json_string)
