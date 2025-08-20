@@ -22,10 +22,20 @@ def query_builder():
 
     params["color"] = card_color
     
-    #if card_color not in colors:
-        #print("Please enter one of the following colors:")
-        #for color in colors:
-            #print("\t colors[color]")
+    color_check = False
+
+    while color_check == False:
+        if card_color != "":
+            if card_color.lower() not in [c.lower() for c in colors]: 
+                print("Please enter one of the following colors: ")
+                for color in colors:
+                    print(f"\t -{color}")
+                card_color = input("Enter card color: ")
+            else:
+                color_check = True
+        else:
+            break
+
 
     card_level = input("Enter card level (leave blank if no level): ")
 
@@ -35,6 +45,21 @@ def query_builder():
 
     params["type"] = card_type
 
+    type_check = False
+
+    while type_check == False:
+        if type_check != "":
+            if card_type not in [t.lower() for t in card_types]:
+                print("Please enter one of the following types: ")
+                for card_type in card_types:
+                    print(f"\t -{card_type}")
+                card_type = input("Enter card type: ")
+            else:
+                type_check = True
+        else:
+            break
+
+
     card_rarity = input("Enter card rarity (leave blank if no type): ")
 
     params["rarity"] = card_rarity
@@ -42,3 +67,6 @@ def query_builder():
     updated_params = filter_non_empty_values(params)
 
     return updated_params
+
+
+query_builder()
